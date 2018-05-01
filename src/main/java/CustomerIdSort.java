@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.TreeSet;
 
 class Customer implements Comparable
@@ -38,13 +39,34 @@ public class CustomerIdSort {
         Customer c4 = new Customer(51, "Ganesh");
         Customer c5 = new Customer(25, "Sai");
 
-        TreeSet t = new TreeSet();
+        /*TreeSet t = new TreeSet();
         t.add(c1);
         t.add(c2);
         t.add(c3);
         t.add(c4);
-        t.add(c5);
+        t.add(c5);*/
 
-        System.out.println(t);
+        TreeSet t1 = new TreeSet(new MyComparator());
+        t1.add(c1);
+        t1.add(c2);
+        t1.add(c3);
+        t1.add(c4);
+        t1.add(c5);
+
+        System.out.println(t1);
+    }
+}
+class MyComparator implements Comparator
+{
+    @Override
+    public int compare(Object o1, Object o2)
+    {
+        Customer c1 = (Customer)o1;
+        Customer c2 = (Customer)o2;
+
+        String s1 = c1.custName;
+        String s2 = c2.custName;
+
+        return  s1.compareTo(s2);
     }
 }
